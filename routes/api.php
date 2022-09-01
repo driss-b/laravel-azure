@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('/', function () {
-    $data = json_decode(file_get_contents(database_path('data/MOCK_DATA.json')));
-    return ['data' => $data];
-})->middleware('CORS');
+Route::middleware([\App\Http\Middleware\CORS::class])->group(function () {
+    Route::get('/seed', [\App\Http\Controllers\DemoController::class, 'seed']);
+    Route::get('/', [\App\Http\Controllers\DemoController::class, 'show'])->middleware('CORS');
+});
+
+
+
