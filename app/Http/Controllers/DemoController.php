@@ -9,6 +9,7 @@ class DemoController extends Controller
 {
     public function seed()
     {
+        Item::truncate();
         $data = collect(json_decode(file_get_contents(database_path('data/MOCK_DATA.json'))));
         $data->map(function ($item) {
             Item::create([
@@ -26,7 +27,7 @@ class DemoController extends Controller
 
     public function show()
     {
-        $data = Item::all();
+        $data = Item::orderBy('id', 'desc')->get();
         return ['data' => $data];
     }
 }
