@@ -27,7 +27,7 @@ class DemoController extends Controller
 
     public function show()
     {
-        $data = Item::orderBy('id', 'desc')->get();
+        $data = collect(Item::orderBy('id', 'desc')->get())->shuffle();
         return ['data' => $data];
     }
 }
