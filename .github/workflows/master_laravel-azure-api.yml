@@ -42,7 +42,6 @@ jobs:
             })
 
             res.data.artifacts
-              .filter(({ name }) => name === 'php-app')
               .forEach(({ id }) => {
                 github.rest.actions.deleteArtifact({
                   owner: context.repo.owner,
@@ -56,7 +55,8 @@ jobs:
         with:
           name: php-app
           path: .
-
+gaa
+gcm 
   deploy:
     runs-on: ubuntu-latest
     needs: build
