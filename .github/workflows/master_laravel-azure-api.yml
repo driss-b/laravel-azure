@@ -42,7 +42,6 @@ jobs:
             })
 
             res.data.artifacts
-              .filter(({ name }) => name === 'php-app')
               .forEach(({ id }) => {
                 github.rest.actions.deleteArtifact({
                   owner: context.repo.owner,
